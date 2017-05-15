@@ -29,16 +29,20 @@ import java.util.Map;
 public class SentiWordNetDemoCode {
 
 
+    /**
+     * Demo Code
+     * @throws IOException
+     */
     public static void main(String [] args) throws IOException {
 
 
         String pathToSWN = "./src/main/resources/SentiWordNet_3.0.0_20130122.txt";
         SentiWordNetDemoCode sentiwordnet = new SentiWordNetDemoCode(pathToSWN);
 
-        System.out.println("good#a "+sentiwordnet.extract("good", "a"));
-        System.out.println("bad#a "+sentiwordnet.extract("bad", "a"));
-        System.out.println("blue#a "+sentiwordnet.extract("blue", "a"));
-        System.out.println("blue#n "+sentiwordnet.extract("blue", "n"));
+        System.out.println("good#a "+sentiwordnet.getSentimentForWord("good", "a"));
+        System.out.println("bad#a "+sentiwordnet.getSentimentForWord("bad", "a"));
+        System.out.println("blue#a "+sentiwordnet.getSentimentForWord("blue", "a"));
+        System.out.println("blue#n "+sentiwordnet.getSentimentForWord("blue", "n"));
     }
 
 
@@ -139,7 +143,7 @@ public class SentiWordNetDemoCode {
         }
     }
 
-    public double extract(String word, String pos) {
+    public double getSentimentForWord(String word, String pos) {
         return dictionary.get(word + "#" + pos);
     }
 
