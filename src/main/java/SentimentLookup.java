@@ -26,7 +26,7 @@ import java.util.Map;
  * This code is based on the coeding of Petter Törnberg and is available on http://sentiwordnet.isti.cnr.it/.
  * Modifications have been made.
  */
-public class SentiWordNetDemoCode {
+public class SentimentLookup {
 
 
     /**
@@ -37,7 +37,7 @@ public class SentiWordNetDemoCode {
 
 
         String pathToSWN = "./src/main/resources/SentiWordNet_3.0.0_20130122.txt";
-        SentiWordNetDemoCode sentiwordnet = new SentiWordNetDemoCode(pathToSWN);
+        SentimentLookup sentiwordnet = new SentimentLookup(pathToSWN);
 
         System.out.println("good#a "+sentiwordnet.getSentimentForWord("good", "a"));
         System.out.println("bad#a "+sentiwordnet.getSentimentForWord("bad", "a"));
@@ -48,7 +48,7 @@ public class SentiWordNetDemoCode {
 
     private Map<String, Double> dictionary;
 
-    public SentiWordNetDemoCode(String pathToSWN) throws IOException {
+    public SentimentLookup(String pathToSWN) throws IOException {
         // This is our main dictionary representation
         dictionary = new HashMap<String, Double>();
 
