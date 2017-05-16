@@ -1,7 +1,6 @@
-/**
+package sentiment; /**
  * Created by Jan P. on 15.05.2017.
  */
-import java.io.IOException;
 import java.util.List;
 
 public class SentimentProcessor {

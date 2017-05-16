@@ -1,4 +1,4 @@
-//    Copyright 2013 Petter Törnberg
+package sentiment;//    Copyright 2013 Petter Törnberg
 //
 //    This demo code has been kindly provided by Petter Törnberg <pettert@chalmers.se>
 //    for the SentiWordNet website.
