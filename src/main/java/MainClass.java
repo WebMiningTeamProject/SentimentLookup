@@ -9,7 +9,11 @@ import java.util.List;
  */
 public class MainClass {
 
-
+    /**
+     * Execute this method to create sentiment ratings for articles for which not sentiment has yet been calculated.
+     * (a delta mechanism is implemented)
+     * @param args
+     */
     public static void main(String[] args) {
 
         DatabaseHandler db = DatabaseHandler.setUpDatabaseHandler();
@@ -18,7 +22,8 @@ public class MainClass {
             return;
         }
 
-        List<ArticlesFromDb> articles = db.listOfNotProcessedArticles(100);
+        // get the list of articles that were not previously processed
+        List<ArticlesFromDb> articles = db.listOfArticlesNotProcessed();
 
         for(ArticlesFromDb article : articles){
             System.out.println("Processing: " + article.getSource_uri());
@@ -26,6 +31,7 @@ public class MainClass {
 
 
             if(article.getText() == null){
+                // skip empty articles
                 continue;
             }
 
@@ -34,18 +40,15 @@ public class MainClass {
             if(sentimentScore > 0){
                 sentimentScoreBinary = 1;
             }
+
+            // write the sentiment score to the database
             db.writeSentiment(article.getSource_uri(), sentimentScore, sentimentScoreBinary);
 
             System.out.println("Sentiment: " + sentimentScore + "\n");
 
         }
 
-
-
+        System.out.println("Done.");
 
     }
-
-
-
-
 }
