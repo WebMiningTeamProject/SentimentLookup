@@ -1,7 +1,7 @@
 
 
 /**
- * Created by D060249 on 16.05.2017.
+ * Created by Jan P. on 16.05.2017.
  */
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -16,11 +16,11 @@ import java.util.Properties;
 /**
  * This can tokenize, lemmatize and annotate texts.
  */
-public class StanfordLemmatizer {
+public class TextProcessor {
 
     private StanfordCoreNLP pipeline;
 
-    public StanfordLemmatizer() {
+    public TextProcessor() {
         // Create StanfordCoreNLP object properties, with POS tagging
         // (required for lemmatization), and lemmatization
         Properties props;

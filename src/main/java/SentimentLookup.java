@@ -24,7 +24,7 @@ import java.util.Map;
 
 /**
  * This code is based on the coeding of Petter Törnberg and is available on http://sentiwordnet.isti.cnr.it/.
- * Modifications have been made.
+ * Modifications have been made. - jp
  */
 public class SentimentLookup {
 
@@ -48,7 +48,7 @@ public class SentimentLookup {
 
     private Map<String, Double> dictionary;
 
-    public SentimentLookup(String pathToSWN) throws IOException {
+    public SentimentLookup(String pathToSWN)  {
         // This is our main dictionary representation
         dictionary = new HashMap<String, Double>();
 
@@ -138,13 +138,28 @@ public class SentimentLookup {
             e.printStackTrace();
         } finally {
             if (csv != null) {
-                csv.close();
+                try {
+                    csv.close();
+                } catch (IOException ioe){
+                    System.out.println(ioe.toString());
+                }
             }
         }
     }
 
+    /**
+     * Get the sentiment for a word - pos-tag combination.
+     * @param word
+     * @param pos
+     * @return The sentiment value between 0 and 1. If the word was not found: 500.
+     */
     public double getSentimentForWord(String word, String pos) {
-        return dictionary.get(word + "#" + pos);
+        try {
+            double result = dictionary.get(word + "#" + pos);
+            return result;
+        } catch(NullPointerException npe){
+            return 500;
+        }
     }
 
 
