@@ -13,6 +13,9 @@ buildNumber.properties
 
 # properties file
 .properties
+*.properties;
 
 # ini file
+*.ini
 .ini
+crawler_config.ini
